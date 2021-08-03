@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Author, Category, Post, Comment, PostCategory
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(Author)
@@ -15,7 +16,7 @@ class PostCategoryInline(admin.TabularInline):
 
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(TranslationAdmin):
     inlines = (PostCategoryInline,)
     list_display = ('id', 'author', 'type_post', 'title', 'get_content', 'created_at', 'rating')
     list_display_links = ('id', 'title', 'get_content',)
@@ -37,4 +38,7 @@ class CommentAdmin(admin.ModelAdmin):
     get_content.short_description = 'Комментарий'
 
 
-admin.site.register(Category)
+@admin.register(Category)
+class CategoryAdmin(TranslationAdmin):
+    model = Category
+

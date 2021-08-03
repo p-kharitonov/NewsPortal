@@ -1,8 +1,9 @@
 {% load static %}
 {% load custom_tags %}
+{% load i18n %}
 {% is_not_author as is_not_author %}
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <!-- Обязательные метатеги -->
     <meta charset="utf-8">
@@ -14,9 +15,27 @@
     {% endblock style %}
   </head>
   <body>
-  {% load cache %}
-   {% cache 300 header %}
   <header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="btn-toolbar">
+          <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
+            <div class="input-group">
+              <input type="hidden" name="next" value="{{ redirect_to }}">
+              <select name="language" id="" class="form-select">
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% for language in languages %}
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %} >
+                  {{ language.name_local }} - {{ language.code }}
+                </option>
+                {% endfor %}
+              </select>
+              <input type="submit" value="{% trans 'Set' %}" class="btn btn-primary">
+            </div>
+          </form>
+      </div>
+    </div>
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -24,37 +43,37 @@
         </a>
         {% with request.resolver_match.url_name as url_name %}
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{% url 'home' %}" class="nav-link px-2 {% if url_name == 'home' %}text-white{% else %}text-secondary{% endif %}">Главная</a></li>
-          <li><a href="{% url 'news' %}" class="nav-link px-2 {% if url_name == 'news' %}text-white{% else %}text-secondary{% endif %}">Новости</a></li>
-          <li><a href="{% url 'categories_list' %}" class="nav-link px-2 {% if url_name == 'categories_list' %}text-white{% else %}text-secondary{% endif %}">Категории</a></li>
-          <li><a href="{% url 'post_search' %}" class="nav-link px-2 {% if url_name == 'post_search' %}text-white{% else %}text-secondary{% endif %}">Поиск</a></li>
+          <li><a href="{% url 'home' %}" class="nav-link px-2 {% if url_name == 'home' %}text-white{% else %}text-secondary{% endif %}">{% trans "Home" %}</a></li>
+          <li><a href="{% url 'news' %}" class="nav-link px-2 {% if url_name == 'news' %}text-white{% else %}text-secondary{% endif %}">{% trans "News" %}</a></li>
+          <li><a href="{% url 'categories_list' %}" class="nav-link px-2 {% if url_name == 'categories_list' %}text-white{% else %}text-secondary{% endif %}">{% trans "Categories" %}</a></li>
+          <li><a href="{% url 'post_search' %}" class="nav-link px-2 {% if url_name == 'post_search' %}text-white{% else %}text-secondary{% endif %}">{% trans "Search" %}</a></li>
           {% if not is_not_author %}
-          <li><a href="{% url 'post_add' %}" class="nav-link px-2 {% if url_name == 'post_add' %}text-white{% else %}text-secondary{% endif %}">Добавить новость</a></li>
+          <li><a href="{% url 'post_add' %}" class="nav-link px-2 {% if url_name == 'post_add' %}text-white{% else %}text-secondary{% endif %}">{% trans "Add news" %}</a></li>
           {% endif %}
         </ul>
         {% endwith %}
-        {% endcache %}
+
         {% if request.user.is_authenticated %}
           {% if is_not_author %}
           <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <a href="{% url 'upgrade' %}" class="btn btn-light btn-outline-primary">Стать автором</a>
+            <a href="{% url 'upgrade' %}" class="btn btn-light btn-outline-primary">{% trans "Become an author" %}! </a>
           </div>
           {% endif %}
         <div class="text-end">
           <a class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ request.user.username }}</a>
           <ul class="dropdown-menu">
             {% if user.is_superuser %}
-            <li><a class="dropdown-item" href="/admin">Панель администратора</a></li>
+            <li><a class="dropdown-item" href="/admin">{% trans "Admin panel" %}</a></li>
             {% endif %}
-            <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Сменить пароль</a></li>
+            <li><a class="dropdown-item" href="{% url 'account_change_password' %}">{% trans "Change password" %}</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Выйти</a></li>
+            <li><a class="dropdown-item" href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
           </ul>
         </div>
           {% else %}
         <div class="text-end">
-          <a href="{% url 'account_login' %}" class="btn btn-outline-light me-2">Авторизация</a>
-          <a href="{% url 'account_signup' %}" class="btn btn-warning">Регистрация</a>
+          <a href="{% url 'account_login' %}" class="btn btn-outline-light me-2">{% trans "Login" %}</a>
+          <a href="{% url 'account_signup' %}" class="btn btn-warning">{% trans "Registration" %}</a>
         </div>
         {% endif %}
       </div>

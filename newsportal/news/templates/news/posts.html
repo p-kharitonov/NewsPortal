@@ -1,7 +1,7 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% block title %}
-Все новости
+{% trans "All news" %}
 {% endblock title %}
 
 {% block style %}
@@ -17,7 +17,7 @@
 {% endblock style %}
 
 {% block content %}
-<h1 class="text-center">Все статьи ({{ count_post }})</h1>
+<h1 class="text-center">{% trans "All news" %}({{ count_post }})</h1>
 {% if posts %}
 <div class="card-group text-left">
   {% for post in posts %}
@@ -30,7 +30,7 @@
 </div>
   {% else %}
     <div class="alert alert-primary" role="alert">
-      Пока еще нет ни одной новости
+      {% trans "No news yet" %}
     </div>
   {% endif %}
 

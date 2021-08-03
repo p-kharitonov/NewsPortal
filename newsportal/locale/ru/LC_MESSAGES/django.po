@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-03 16:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: news/filters.py:7 news/forms.py:17 news/models.py:30 news/models.py:53
+msgid "Title"
+msgstr "Название"
+
+#: news/filters.py:8 news/models.py:25 news/models.py:48
+#: news/templates/news/inc/_card.html:8 news/templates/news/post.html:12
+#: news/templates/news/post_delete.html:22
+msgid "Author"
+msgstr "Автор"
+
+#: news/filters.py:9
+msgid "Start date"
+msgstr "Начиная с"
+
+#: news/forms.py:11
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: news/forms.py:18
+msgid "Enter text"
+msgstr "Введите текст"
+
+#: news/models.py:9 news/models.py:95
+msgid "User"
+msgstr "Пользователь"
+
+#: news/models.py:10 news/models.py:55 news/models.py:98
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: news/models.py:26
+msgid "Authors"
+msgstr "Авторы"
+
+#: news/models.py:31
+msgid "Subscribers"
+msgstr "Подписчики"
+
+#: news/models.py:37 news/models.py:52 news/models.py:89
+msgid "Category"
+msgstr "Категория"
+
+#: news/models.py:38 news/models.py:90 templates/default.html:43
+msgid "Categories"
+msgstr "Категории"
+
+#: news/models.py:45
+msgid "Article"
+msgstr "Статья"
+
+#: news/models.py:46
+msgctxt "Singular"
+msgid "News"
+msgstr "Новость"
+
+#: news/models.py:50
+msgid "Type"
+msgstr "Тип"
+
+#: news/models.py:51 news/models.py:97
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: news/models.py:54
+msgid "Content"
+msgstr "Контент"
+
+#: news/models.py:72 news/models.py:94
+msgid "Publication"
+msgstr "Публикация"
+
+#: news/models.py:73
+msgid "Publications"
+msgstr "Публикации"
+
+#: news/models.py:96 news/models.py:115
+msgid "Comment"
+msgstr "Комментарий"
+
+#: news/models.py:116
+msgid "Comments"
+msgstr "Комментарии"
+
+#: news/templates/news/categories.html:4 news/templates/news/categories.html:8
+msgid "All categories"
+msgstr "Категории"
+
+#: news/templates/news/categories.html:21
+msgid "There are no categories yet"
+msgstr "В этой категории нет новостей"
+
+#: news/templates/news/inc/_card.html:13 news/templates/news/post.html:11
+#: news/templates/news/post_delete.html:21
+msgid "Published"
+msgstr "Опубликовано"
+
+#: news/templates/news/inc/_pagination.html:8
+msgid "Start"
+msgstr "В начало"
+
+#: news/templates/news/inc/_pagination.html:31
+msgid "End"
+msgstr "В конец"
+
+#: news/templates/news/inc/_post_add_update_form.html:26
+msgid "Add"
+msgstr "Добавить"
+
+#: news/templates/news/post.html:14
+msgid "Edit"
+msgstr "Изменить"
+
+#: news/templates/news/post.html:14
+msgid "Delete"
+msgstr "Удалить"
+
+#: news/templates/news/post_add.html:4 news/templates/news/post_add.html:8
+msgid "Add News"
+msgstr "Добавить новость"
+
+#: news/templates/news/post_delete.html:14
+msgid "Yes!"
+msgstr "Да!"
+
+#: news/templates/news/post_delete.html:15
+msgid "No!"
+msgstr "Нет!"
+
+#: news/templates/news/post_update.html:4
+#: news/templates/news/post_update.html:8
+msgid "Update news"
+msgstr "Добавить новость"
+
+#: news/templates/news/posts.html:4 news/templates/news/posts.html:20
+#: news/templates/news/posts_of_category.html:4
+msgid "All news"
+msgstr "Добавить новость"
+
+#: news/templates/news/posts.html:33 news/templates/news/search.html:39
+msgid "No news yet"
+msgstr "Пока еще нет новостей"
+
+#: news/templates/news/posts_of_category.html:4
+msgid "in category"
+msgstr "в категории"
+
+#: news/templates/news/posts_of_category.html:20
+msgid "All news in category"
+msgstr "Все новости в категории"
+
+#: news/templates/news/posts_of_category.html:39
+msgid "There are no news in the category yet"
+msgstr "В этой категории нет новостей"
+
+#: news/templates/news/search.html:4 news/templates/news/search.html:20
+msgid "Search news"
+msgstr "Поиск"
+
+#: news/templates/news/search.html:25 templates/default.html:44
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/403.html:6 templates/403.html:14
+msgid "Access is denied. Error 403"
+msgstr "Доступ запрещен. Ошибка 403"
+
+#: templates/403.html:15
+msgid "You do not have permission to access this page!"
+msgstr "У Вас нет прав для доступа к этой странице!"
+
+#: templates/404.html:6 templates/404.html:11
+msgid "Page not found. Error 404"
+msgstr "Страница не найдена. Ошибка 404"
+
+#: templates/default.html:29
+msgid "Set"
+msgstr "Установить"
+
+#: templates/default.html:41
+msgid "Home"
+msgstr "Главная"
+
+#: templates/default.html:42
+msgid "News"
+msgstr "Новости"
+
+#: templates/default.html:46
+msgid "Add news"
+msgstr "Добавить новость"
+
+#: templates/default.html:54
+msgid "Become an author"
+msgstr "Стать автором"
+
+#: templates/default.html:61
+msgid "Admin panel"
+msgstr "Панель администратора"
+
+#: templates/default.html:63
+msgid "Change password"
+msgstr "Сменить пароль"
+
+#: templates/default.html:65
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/default.html:70
+msgid "Login"
+msgstr "Авторизация"
+
+#: templates/default.html:71
+msgid "Registration"
+msgstr "Регистрация"

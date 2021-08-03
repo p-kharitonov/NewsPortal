@@ -1,9 +1,11 @@
 {% load custom_tags %}
+{% load i18n %}
+
 <nav aria-label="Page navigation">
   <ul class="pagination justify-content-center">
     <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
     {% if page_obj.has_previous %}
-        <li class="page-item"><a class="page-link" href="?{% param_replace page=1 %}">В начало</a></li>
+        <li class="page-item"><a class="page-link" href="?{% param_replace page=1 %}">{% trans "Start" %}</a></li>
         <li class="page-item">
           <a class="page-link" href="?{% param_replace page=page_obj.previous_page_number %}" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -26,7 +28,7 @@
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
-        <li class="page-item"><a class="page-link" href="?{% param_replace page=paginator.num_pages %}">В конец</a></li>
+        <li class="page-item"><a class="page-link" href="?{% param_replace page=paginator.num_pages %}">{% trans "End" %}</a></li>
     {% endif %}
   </ul>
 </nav>

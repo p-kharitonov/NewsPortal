@@ -1,11 +1,11 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% block title %}
-Все категории
+{% trans "All categories" %}
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-center">Все категории</h1>
+<h1 class="text-center">{% trans "All categories" %}</h1>
   {% if categories %}
 <div class="card-group text-left">
   <ul class="list-group">
@@ -18,7 +18,7 @@
 </div>
   {% else %}
     <div class="alert alert-primary" role="alert">
-      Пока еще нет ни одной категории
+      {% trans "There are no categories yet" %}
     </div>
   {% endif %}
 {% endblock content %}

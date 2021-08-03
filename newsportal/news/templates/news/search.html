@@ -1,7 +1,7 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% block title %}
-Поиск статей
+{% trans "Search news" %}
 {% endblock title %}
 
 {% block style %}
@@ -17,12 +17,12 @@
 {% endblock style %}
 
 {% block content %}
-<h1 class="text-center">Поиск статей ({{ count_post }})</h1>
+<h1 class="text-center">{% trans "Search news" %} ({{ count_post }})</h1>
   {% if posts %}
 <form method="GET">
   <div class="form-group">
     {{ filter.form }}
-    <input type="submit" value="Найти">
+    <input type="submit" value="{% trans 'Search' %}">
   </div>
 </form>
 <div class="card-group text-left">
@@ -36,7 +36,7 @@
 </div>
   {% else %}
     <div class="alert alert-primary" role="alert">
-      Пока еще нет ни одной новости
+      {% trans "No news yet" %}
     </div>
   {% endif %}
 

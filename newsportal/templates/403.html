@@ -1,9 +1,9 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% load custom_tags %}
 
 {% block title %}
-Запрос отклонен. Ошибка 403
+{% trans "Access is denied. Error 403" %}
 {% endblock title %}
 
 {% block content %}
@@ -11,8 +11,8 @@
   {% if exception %}
   <h1>{{ exception }}</h1>
   {% else %}
-  <h1>Запрос отклонен. Ошибка 403</h1>
-  <p>У Вас нет разрешения для доступа на эту страницу!</p>
+  <h1>{% trans "Access is denied. Error 403" %}</h1>
+  <p>{% trans "You do not have permission to access this page!" %}</p>
   {% endif %}
 </div>
 {% endblock content %}

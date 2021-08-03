@@ -1,11 +1,11 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% block title %}
-Обновить новость - {{ post.title }}
+{% trans "Update news" %}: - {{ post.title }}
 {% endblock title %}
 
 {% block content %}
-<h1>Обновить новость</h1>
+<h1>{% trans "Update news" %}</h1>
     {% block form_post %}
          {% include 'news/inc/_post_add_update_form.html' %}
     {% endblock form_post %}

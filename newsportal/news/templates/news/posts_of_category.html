@@ -1,7 +1,7 @@
 {% extends 'default.html' %}
-
+{% load i18n %}
 {% block title %}
-Все новости {% if category %}в категории {{ category }}{% endif %}
+{% trans "All news" %} {% if category %}{% trans "in category" %} {{ category }}{% endif %}
 {% endblock title %}
 
 {% block style %}
@@ -17,7 +17,7 @@
 {% endblock style %}
 
 {% block content %}
-<h1 class="text-center">Все статьи в категории {{ category }} ({{ count_post }})</h1>
+<h1 class="text-center">{% trans "All news in category" %}  {{ category }} ({{ count_post }})</h1>
 <div class="text-center">
   <form action="{% url 'subscribe' %}" method="POST">
     {% csrf_token %}
@@ -36,7 +36,7 @@
 </div>
   {% else %}
     <div class="alert alert-primary" role="alert">
-      Пока еще нет ни одной новости в категории {{ category }}
+      {% trans "There are no news in the category yet" %} {{ category }}
     </div>
   {% endif %}
 
