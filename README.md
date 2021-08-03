@@ -10,7 +10,7 @@
 <p>pip3 install -U "celery[redis]"</p>
 <p>redis-server</p>
 <hr>
-<p>celery -A mcdonalds worker -l INFO -B</p>
+<p>celery -A newsportal worker -l INFO -B</p>
 <hr>
 <p>python3 manage.py makemigrations</p>
 <p>python3 manage.py migrate</p>
