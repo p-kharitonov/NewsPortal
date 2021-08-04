@@ -1,5 +1,6 @@
 from django import template
-from news.models import Post
+from django.utils import timezone
+import pytz
 
 register = template.Library()
 
@@ -28,3 +29,13 @@ def is_not_author(context):
     request = context["request"]
     is_not_author = not request.user.groups.filter(name='authors').exists()
     return is_not_author
+
+
+@register.simple_tag(name='get_current_time')
+def get_current_time():
+    return timezone.now()
+
+
+@register.simple_tag(name='get_timezones')
+def get_timezones():
+    return pytz.common_timezones

@@ -2,13 +2,14 @@
 from datetime import datetime, timedelta
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView,  DeleteView # импортируем класс получения деталей объекта
+from django.views.generic import View, ListView, DetailView, CreateView, UpdateView,  DeleteView # импортируем класс получения деталей объекта
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.cache import cache
 from django.shortcuts import get_object_or_404
+from django.utils.translation import gettext as _
 from .models import Post, Author, Category
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm
@@ -83,7 +84,7 @@ class PostAddView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
         today = now.date()
         count_post = Post.objects.filter(author=author, created_at__gte=today).count()
         if count_post >= 3:
-            raise PermissionDenied("Вы не можете оставлять более 3 статей в день!")
+            raise PermissionDenied(_("You cannot post more than 3 articles per day!"))
         self.object = None
         return super().get(request, *args, **kwargs)
 
@@ -93,7 +94,7 @@ class PostAddView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
         count_post = Post.objects.filter(author=author, created_at__gte=today).count()
         print(count_post)
         if count_post >= 3:
-            raise PermissionDenied("Вы не можете оставлять более 3 статей в день!")
+            raise PermissionDenied(_("You cannot post more than 3 articles per day!"))
         self.object = None
         return super().post(request, *args, **kwargs)
 
@@ -188,4 +189,10 @@ def subscribe(request):
             category.subscribers.remove(request.user)
         return redirect('posts_category', pk=pk)
     else:
+        return redirect('home')
+
+
+def set_timezone(request):
+    if request.POST:
+        request.session['django_timezone'] = request.POST['timezone']
         return redirect('home')

@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'newsportal.middlewares.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'newsportal.urls'

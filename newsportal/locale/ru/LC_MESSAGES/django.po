@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-03 16:42+0000\n"
+"POT-Creation-Date: 2021-08-04 08:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "Подписчики"
 msgid "Category"
 msgstr "Категория"
 
-#: news/models.py:38 news/models.py:90 templates/default.html:43
+#: news/models.py:38 news/models.py:90 templates/default.html:63
 msgid "Categories"
 msgstr "Категории"
 
@@ -178,9 +178,13 @@ msgstr "В этой категории нет новостей"
 msgid "Search news"
 msgstr "Поиск"
 
-#: news/templates/news/search.html:25 templates/default.html:44
+#: news/templates/news/search.html:25 templates/default.html:64
 msgid "Search"
 msgstr "Поиск"
+
+#: news/views.py:87 news/views.py:97
+msgid "You cannot post more than 3 articles per day!"
+msgstr "Вы не можете оставлять более 3 статей в день!"
 
 #: templates/403.html:6 templates/403.html:14
 msgid "Access is denied. Error 403"
@@ -194,42 +198,42 @@ msgstr "У Вас нет прав для доступа к этой страни
 msgid "Page not found. Error 404"
 msgstr "Страница не найдена. Ошибка 404"
 
-#: templates/default.html:29
+#: templates/default.html:35 templates/default.html:48
 msgid "Set"
 msgstr "Установить"
 
-#: templates/default.html:41
+#: templates/default.html:61
 msgid "Home"
 msgstr "Главная"
 
-#: templates/default.html:42
+#: templates/default.html:62
 msgid "News"
 msgstr "Новости"
 
-#: templates/default.html:46
+#: templates/default.html:66
 msgid "Add news"
 msgstr "Добавить новость"
 
-#: templates/default.html:54
+#: templates/default.html:74
 msgid "Become an author"
 msgstr "Стать автором"
 
-#: templates/default.html:61
+#: templates/default.html:81
 msgid "Admin panel"
 msgstr "Панель администратора"
 
-#: templates/default.html:63
+#: templates/default.html:83
 msgid "Change password"
 msgstr "Сменить пароль"
 
-#: templates/default.html:65
+#: templates/default.html:85
 msgid "Logout"
 msgstr "Выйти"
 
-#: templates/default.html:70
+#: templates/default.html:90
 msgid "Login"
 msgstr "Авторизация"
 
-#: templates/default.html:71
+#: templates/default.html:91
 msgid "Registration"
 msgstr "Регистрация"

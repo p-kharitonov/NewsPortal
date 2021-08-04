@@ -17,15 +17,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from news.views import HomeView
+from news.views import HomeView, set_timezone
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    path('', cache_page(60*5)(HomeView.as_view()), name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('news/', include('news.urls')),
     path('accounts/', include('allauth.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('set_timezone/', set_timezone, name='set_timezone'),
 ]
 
 if settings.DEBUG:

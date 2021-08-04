@@ -3,7 +3,7 @@ from .views import *
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    path('', cache_page(60*5)(PostListView.as_view()), name='news'),
+    path('', PostListView.as_view(), name='news'),
     path('<int:pk>', PostDetailView.as_view(), name='post'),
     path('search/', PostSearchView.as_view(), name='post_search'),
     path('add/', PostAddView.as_view(), name='post_add'),

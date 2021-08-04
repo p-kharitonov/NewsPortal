@@ -1,6 +1,7 @@
 {% load static %}
 {% load custom_tags %}
 {% load i18n %}
+{% load tz %}
 {% is_not_author as is_not_author %}
 <!doctype html>
 <html lang="en">
@@ -13,11 +14,18 @@
     <title>News Portal — {% block title %} {% endblock title %}</title>
     {% block style %}
     {% endblock style %}
+    <style>
+      body {background-color: {% if current_time.hour >= 19 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};}
+    </style>
   </head>
   <body>
   <header class="p-3 bg-dark text-white">
-    <div class="container">
-        <div class="btn-toolbar">
+    <div class="container mb-2">
+        <div class="btn-toolbar justify-content-between">
+          {% get_current_timezone as TIME_ZONE %}
+          {% get_timezones as timezones %}
+          {% get_current_time as current_time %}
+          <div>{{ current_time|timezone:TIME_ZONE }}</div>
           <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
             <div class="input-group">
               <input type="hidden" name="next" value="{{ redirect_to }}">
@@ -34,6 +42,19 @@
               <input type="submit" value="{% trans 'Set' %}" class="btn btn-primary">
             </div>
           </form>
+
+          <form action="{% url 'set_timezone' %}" method="POST">
+              {% csrf_token %}
+              <div class="input-group">
+                <select name="timezone">
+                    {% for tz in timezones %}
+                    <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="{% trans 'Set' %}" class="btn btn-primary">
+              </div>
+          </form>
+
       </div>
     </div>
     <div class="container">
