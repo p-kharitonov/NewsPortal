@@ -192,7 +192,25 @@ def subscribe(request):
         return redirect('home')
 
 
+@login_required
+def like(request):
+    if request.POST:
+        pk = request.POST.get('pk')
+        post = Post.objects.get(pk=pk)
+        post.like()
+        return redirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def dislike(request):
+    if request.POST:
+        pk = request.POST.get('pk')
+        post = Post.objects.get(pk=pk)
+        post.dislike()
+        return redirect(request.META.get('HTTP_REFERER'))
+
+
 def set_timezone(request):
     if request.POST:
         request.session['django_timezone'] = request.POST['timezone']
-        return redirect('home')
+        return redirect(request.META.get('HTTP_REFERER'))

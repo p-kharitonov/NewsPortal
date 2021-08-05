@@ -13,4 +13,6 @@ urlpatterns = [
     path('categories/', CategoriesListView.as_view(), name='categories_list'),
     path('categories/<int:pk>', cache_page(60*5)(PostsCategoryListView.as_view()), name='posts_category'),
     path('subscribe/', subscribe, name='subscribe'),
+    path('like/', like, name='like'),
+    path('dislike/', dislike, name='dislike'),
 ]
