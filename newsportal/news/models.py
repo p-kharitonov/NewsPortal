@@ -51,16 +51,44 @@ class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Title'))
     content = models.TextField(verbose_name=_('Content'))
     rating = models.IntegerField(default=0, verbose_name=_('Rating'))
+    users_with_like = models.ManyToManyField(User, blank=True, null=True, related_name='users_with_like')
+    users_with_dislike = models.ManyToManyField(User, editable=False, blank=True, null=True, related_name='users_with_dislike')
 
-    def like(self):
-        self.rating += 1
-        self.save()
-        self.author.update_rating(3)
+    def like(self, user):
+        if user in self.users_with_dislike.all():
+            self.rating += 2
+            self.users_with_dislike.remove(user)
+            self.users_with_like.add(user)
+            self.author.update_rating(6)
+            self.save()
+        elif user in self.users_with_like.all():
+            self.rating -= 1
+            self.users_with_like.remove(user)
+            self.author.update_rating(-3)
+            self.save()
+        else:
+            self.rating += 1
+            self.users_with_like.add(user)
+            self.author.update_rating(3)
+            self.save()
 
-    def dislike(self):
-        self.rating -= 1
-        self.save()
-        self.author.update_rating(-3)
+    def dislike(self, user):
+        if user in self.users_with_like.all():
+            self.rating -= 2
+            self.users_with_like.remove(user)
+            self.users_with_dislike.add(user)
+            self.author.update_rating(-6)
+            self.save()
+        elif user in self.users_with_dislike.all():
+            self.rating += 1
+            self.users_with_dislike.remove(user)
+            self.author.update_rating(3)
+            self.save()
+        else:
+            self.rating -= 1
+            self.users_with_dislike.add(user)
+            self.author.update_rating(-3)
+            self.save()
 
     def __str__(self):
         return f'{self.title}'

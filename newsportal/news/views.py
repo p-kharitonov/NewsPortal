@@ -197,7 +197,7 @@ def like(request):
     if request.POST:
         pk = request.POST.get('pk')
         post = Post.objects.get(pk=pk)
-        post.like()
+        post.like(request.user)
         return redirect(request.META.get('HTTP_REFERER'))
 
 
@@ -206,7 +206,7 @@ def dislike(request):
     if request.POST:
         pk = request.POST.get('pk')
         post = Post.objects.get(pk=pk)
-        post.dislike()
+        post.dislike(request.user)
         return redirect(request.META.get('HTTP_REFERER'))
 
 
