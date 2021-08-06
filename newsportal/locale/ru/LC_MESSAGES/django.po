@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-04 08:47+0000\n"
+"POT-Creation-Date: 2021-08-06 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,12 +20,12 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: news/filters.py:7 news/forms.py:17 news/models.py:30 news/models.py:53
+#: news/filters.py:7 news/forms.py:17 news/models.py:28 news/models.py:51
 msgid "Title"
 msgstr "Название"
 
-#: news/filters.py:8 news/models.py:25 news/models.py:48
-#: news/templates/news/inc/_card.html:8 news/templates/news/post.html:12
+#: news/filters.py:8 news/models.py:23 news/models.py:46
+#: news/templates/news/inc/_card.html:27 news/templates/news/post.html:12
 #: news/templates/news/post_delete.html:22
 msgid "Author"
 msgstr "Автор"
@@ -46,44 +46,45 @@ msgstr "Введите текст"
 msgid "User"
 msgstr "Пользователь"
 
-#: news/models.py:10 news/models.py:55 news/models.py:98
+#: news/models.py:10 news/models.py:53 news/models.py:98
+#: news/templates/news/inc/_card.html:27
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: news/models.py:26
+#: news/models.py:24
 msgid "Authors"
 msgstr "Авторы"
 
-#: news/models.py:31
+#: news/models.py:29
 msgid "Subscribers"
 msgstr "Подписчики"
 
-#: news/models.py:37 news/models.py:52 news/models.py:89
+#: news/models.py:35 news/models.py:50 news/models.py:89
 msgid "Category"
 msgstr "Категория"
 
-#: news/models.py:38 news/models.py:90 templates/default.html:63
+#: news/models.py:36 news/models.py:90 templates/default.html:69
 msgid "Categories"
 msgstr "Категории"
 
-#: news/models.py:45
+#: news/models.py:43
 msgid "Article"
 msgstr "Статья"
 
-#: news/models.py:46
+#: news/models.py:44
 msgctxt "Singular"
 msgid "News"
 msgstr "Новость"
 
-#: news/models.py:50
+#: news/models.py:48
 msgid "Type"
 msgstr "Тип"
 
-#: news/models.py:51 news/models.py:97
+#: news/models.py:49 news/models.py:97
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: news/models.py:54
+#: news/models.py:52
 msgid "Content"
 msgstr "Контент"
 
@@ -111,7 +112,7 @@ msgstr "Категории"
 msgid "There are no categories yet"
 msgstr "В этой категории нет новостей"
 
-#: news/templates/news/inc/_card.html:13 news/templates/news/post.html:11
+#: news/templates/news/inc/_card.html:32 news/templates/news/post.html:11
 #: news/templates/news/post_delete.html:21
 msgid "Published"
 msgstr "Опубликовано"
@@ -178,7 +179,7 @@ msgstr "В этой категории нет новостей"
 msgid "Search news"
 msgstr "Поиск"
 
-#: news/templates/news/search.html:25 templates/default.html:64
+#: news/templates/news/search.html:25 templates/default.html:70
 msgid "Search"
 msgstr "Поиск"
 
@@ -198,42 +199,42 @@ msgstr "У Вас нет прав для доступа к этой страни
 msgid "Page not found. Error 404"
 msgstr "Страница не найдена. Ошибка 404"
 
-#: templates/default.html:35 templates/default.html:48
+#: templates/default.html:42 templates/default.html:54
 msgid "Set"
 msgstr "Установить"
 
-#: templates/default.html:61
+#: templates/default.html:67
 msgid "Home"
 msgstr "Главная"
 
-#: templates/default.html:62
+#: templates/default.html:68
 msgid "News"
 msgstr "Новости"
 
-#: templates/default.html:66
+#: templates/default.html:72
 msgid "Add news"
 msgstr "Добавить новость"
 
-#: templates/default.html:74
+#: templates/default.html:80
 msgid "Become an author"
 msgstr "Стать автором"
 
-#: templates/default.html:81
+#: templates/default.html:87
 msgid "Admin panel"
 msgstr "Панель администратора"
 
-#: templates/default.html:83
+#: templates/default.html:89
 msgid "Change password"
 msgstr "Сменить пароль"
 
-#: templates/default.html:85
+#: templates/default.html:91
 msgid "Logout"
 msgstr "Выйти"
 
-#: templates/default.html:90
+#: templates/default.html:96
 msgid "Login"
 msgstr "Авторизация"
 
-#: templates/default.html:91
+#: templates/default.html:97
 msgid "Registration"
 msgstr "Регистрация"

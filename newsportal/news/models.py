@@ -9,13 +9,11 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'))
     rating = models.IntegerField(default=0, verbose_name=_('Rating'))
 
-    def update_rating(self):
-        posts = Post.objects.filter(author=self.id)
-        rating_posts = sum([int(post.rating) for post in posts]) * 3
-        rating_comments = sum([int(comment.rating) for comment in Comment.objects.filter(user=self.id)])
-        rating_comments_posts = sum([int(comment.rating) for post in posts for comment in Comment.objects.filter(post=post.id)])
-        self.rating = sum([rating_posts, rating_comments, rating_comments_posts])
+    def update_rating(self, number):
+        self.rating += number
         self.save()
+
+    def get_rating(self):
         return self.rating
 
     def __str__(self):
@@ -57,10 +55,12 @@ class Post(models.Model):
     def like(self):
         self.rating += 1
         self.save()
+        self.author.update_rating(3)
 
     def dislike(self):
         self.rating -= 1
         self.save()
+        self.author.update_rating(-3)
 
     def __str__(self):
         return f'{self.title}'

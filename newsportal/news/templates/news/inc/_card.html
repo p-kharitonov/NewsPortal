@@ -24,7 +24,7 @@
       </span>
       <img src="/media/photo.jpg" class="card-img-top" alt="{{ post.title|censor }}">
       <div class="card-body">
-        <p class="card-text"><small class="text-muted">{% trans "Author" %}: {{ post.author }}</small></p>
+        <p class="card-text"><small class="text-muted">{% trans "Author" %}: {{ post.author }}. {% trans "Rating" %}: {{ post.author.get_rating }}</small></p>
         <h5 class="card-title"><a href="{{ post.get_absolute_url }}" class="text-dark text-decoration-none">{{ post.title|censor }}</a></h5>
         <p class="card-text">{{ post.content|censor|truncatechars:150 }}</p>
       </div>
